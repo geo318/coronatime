@@ -1,3 +1,25 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+    .app-shadow {
+        box-shadow: -3px 3px 0px #DBE8FB, -3px -3px 0px #DBE8FB, 3px -3px 0px #DBE8FB, 3px 3px 0px #DBE8FB, 3px 3px 0px #DBE8FB;
+    }
+    .border-success {
+        border-color:#249E2C;
+        background: url('/public/icons/input-success.svg') no-repeat right 24px center;
+        background-size: 20px;
+    }
+    .border-error {
+        border-color: #CC1E1E
+    }
+    .border-error + span,
+    .span-error {
+        color: #CC1E1E;
+        background: url('/public/icons/input-error.svg') no-repeat left center;
+        background-size: 20px;
+        padding: 4px 6px 0 30px;
+        margin-top: 8px;
+    }
+}
