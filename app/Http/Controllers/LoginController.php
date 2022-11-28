@@ -8,23 +8,24 @@ use Illuminate\Validation\ValidationException;
 
 class LoginController extends Controller
 {
-    public function destroy()
-    {
-        auth()->logout();
-        return redirect(route('login'));
-    }
+	public function logout()
+	{
+		auth()->logout();
+		return redirect(route('login'));
+	}
 
-    public function login(StoreLoginRequest $request)
-    {
-        $validated = $request->validated();
-        $remember = isset($validated['remember']) ? true : false;
-        $remember && array_pop($validated);
+	public function login(StoreLoginRequest $request)
+	{
+		$validated = $request->validated();
+		$remember = isset($validated['remember']) ? true : false;
+		$remember && array_pop($validated);
 
-        if (! Auth::attempt($validated, ['remember_token' => $remember])) {
-            throw ValidationException::withMessages(['username' => 'Check your email and password again!']);
-        }
+		if (!Auth::attempt($validated, ['remember_token' => $remember]))
+		{
+			throw ValidationException::withMessages(['username' => 'Check your email and password again!']);
+		}
 
-        session()->regenerate();
-        return redirect(route('admin'));
-    }
+		session()->regenerate();
+		return redirect(route('admin'));
+	}
 }
