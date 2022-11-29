@@ -1,40 +1,32 @@
 <?php
 
+use App\Http\Controllers\ConfirmEmailController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
-use Illuminate\Foundation\Auth\EmailVerificationRequest;
-use Illuminate\Http\Request;
+use App\Http\Controllers\ResetPasswordController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 Auth::routes(['verify' => true]);
 
-Route::redirect('/', '/login')->middleware('guest');
-Route::redirect('/', '/admin')->middleware('auth');
-Route::view('/admin', 'admin')->name('admin')->middleware('auth');
-Route::post('/admin/logout', [LoginController::class, 'logout'])->name('logout')->middleware(['auth', 'verified']);
-Route::post('/login', [LoginController::class, 'login'])->name('login')->middleware('guest');
-Route::view('/login', 'login')->middleware('guest');
-Route::view('/register', 'register')->name('register')->middleware('guest');
-Route::post('/register', [RegisterController::class, 'store'])->middleware('guest');
-Route::view('/email/reset', 'reset.send')->name('reset.email');
-Route::view('/reset-password', 'reset.password')->name('reset.password');
+Route::middleware('guest')->group(function () {
+	Route::redirect('/', '/login');
+	Route::view('/login', 'login')->name('login');
+	Route::post('/login', [LoginController::class, 'login']);
+	Route::view('/register', 'register')->name('register');
+	Route::post('/register', [RegisterController::class, 'store']);
+	Route::view('/forgot-password', 'auth.forgot-password')->name('password.request');
+	Route::post('/forgot-password', [ResetPasswordController::class, 'postEmail'])->name('password.email');
+	Route::get('/reset-password/{token}', [ResetPasswordController::class, 'postNewPassword'])->name('password.reset');
+	Route::post('/reset-password', [ResetPasswordController::class, 'resetPassword'])->name('password.update');
+});
 
-//notification controller
-Route::get('/email/verify', function () {
-    return view('auth.verify-email');
-})->middleware('auth')->name('verification.notice');
+Route::middleware(['auth', 'verified'])->group(function () {
+	Route::redirect('/', '/admin');
+	Route::view('/admin', 'admin')->name('admin');
+	Route::post('/admin/logout', [LoginController::class, 'logout'])->name('logout');
+});
 
-//send hash mail
-Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
-    $request->fulfill();
- 
-    return redirect(route('admin'));
-})->middleware(['auth', 'signed'])->name('verification.verify');
-
-//resend
-Route::post('/email/verification-notification', function (Request $request) {
-    $request->user()->sendEmailVerificationNotification();
- 
-    return back()->with('message', 'Verification link sent!');
-})->middleware(['auth', 'throttle:6,1'])->name('verification.send');
+Route::view('/email/verify', 'auth.verify-email')->middleware('auth')->name('verification.notice');
+Route::get('/email/verify/{id}/{hash}', [ConfirmEmailController::class, 'sendEmail'])->middleware(['auth', 'signed'])->name('verification.verify');
+Route::post('/email/verification-notification', [ConfirmEmailController::class, 'resendEmail'])->middleware(['auth', 'throttle:6,1'])->name('verification.send');

@@ -1,0 +1,1 @@
+<button {{ $attributes(["class"=>"w-full uppercase py-5 bg-app-green-lite hover:bg-app-green-darker text-app-white font-black text-base leading-5 rounded-lg"]) }} >{{ $slot ?? 'submit' }}</button>

@@ -22,6 +22,10 @@
             line-height: 16px !important;
             margin-bottom: 24px !important;
         }
+        a {
+            font-size: 14px !important;
+            line-height: 16px !important;
+        }
     }
     tbody {width: 100%;}
     </style>

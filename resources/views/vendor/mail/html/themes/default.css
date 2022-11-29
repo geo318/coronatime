@@ -31,6 +31,9 @@ table, tr, td, tbody,.img-cont {
     -webkit-text-size-adjust: none;
     border-radius: 8px;
     color: #fff;
+    font-weight: 900;
+    font-size: 16px;
+    line-height: 19px;
     overflow: hidden;
     text-decoration: none;
     background-color: #0FBA68;
