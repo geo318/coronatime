@@ -1,0 +1,1 @@
+<x-notify message="We have sent you a confirmation email"/>
