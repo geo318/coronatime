@@ -4,6 +4,7 @@ use App\Http\Controllers\ConfirmEmailController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ResetPasswordController;
+use App\Http\Controllers\StatsController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -23,7 +24,7 @@ Route::middleware('guest')->group(function () {
 
 Route::middleware(['auth', 'verified'])->group(function () {
 	Route::redirect('/', '/admin');
-	Route::view('/admin', 'admin')->name('admin');
+	Route::get('/admin/world', [StatsController::class, 'sum'])->name('admin.world');
 	Route::post('/admin/logout', [LoginController::class, 'logout'])->name('logout');
 });
 

@@ -1,3 +1,5 @@
 <div {{ $attributes(['class'=>'full-w flex']) }}>
-    <img src="{{ asset('icons/logo.svg') }}" alt="logo">
+    <a href="{{ route('login') }}">
+        <img src="{{ asset('icons/logo.svg') }}" alt="logo">
+    </a>
 </div>

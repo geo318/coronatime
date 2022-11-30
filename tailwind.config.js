@@ -8,7 +8,8 @@ module.exports = {
 
   ],
   theme: {
-    colors: {
+    extend: {
+      colors: {
         'app-gray' : '#E6E6E7',
         'app-blue' : '#2029F3',
         'app-green' : '#249E2C',
@@ -17,8 +18,14 @@ module.exports = {
         'app-green-lite' : '#0FBA68',
         'app-red' : '#CC1E1E',
         'dark-gray' : '#808189',
+        'app-black' : '#010414',
+        'app-yellow' : '#EAD621',
+        'transparent': 'transparent'
+      },
+      boxShadow: {
+        'inner-gray': 'inset 0 -1px 1px 0px #F6F6F7',
+      }
     },
-    extend: {},
   },
   plugins: [],
 }
