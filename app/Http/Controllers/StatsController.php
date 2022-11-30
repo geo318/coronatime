@@ -8,11 +8,12 @@ class StatsController extends Controller
 {
 	public function sum()
 	{
+		$stats = Stat::all();
 		return view('admin', [
 			'stats' => [
-				'confirmed' => Stat::all()->sum('confirmed'),
-				'recovered' => Stat::all()->sum('recovered'),
-				'deaths'    => Stat::all()->sum('deaths'),
+				'confirmed' => $stats->sum('confirmed'),
+				'recovered' => $stats->sum('recovered'),
+				'deaths'    => $stats->sum('deaths'),
 			],
 			'world' => true,
 		]);
