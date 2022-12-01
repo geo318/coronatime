@@ -14,14 +14,13 @@ class FetchCountriesCommand extends Command
 
 	public function handle()
 	{
-		$response = Http::get('https://devtest.ge/countries');
-		$countries = json_decode($response->body());
+		$countries = Http::get('https://devtest.ge/countries')->json();
+
 		foreach ($countries as $id => $country)
 		{
 			Country::updateOrCreate([
-				'code'     => $country->code,
-				'en'       => $country->name->en,
-				'ka'       => $country->name->ka,
+				'code' => $country['code'],
+				'name' => json_encode($country['name']),
 			]);
 		}
 
