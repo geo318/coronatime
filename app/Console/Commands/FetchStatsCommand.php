@@ -15,25 +15,19 @@ class FetchStatsCommand extends Command
 
 	public function handle()
 	{
-		// $response = Http::post('https://devtest.ge/get-country-statistics', [
-		// 	'code'=> 'GE',
-		// ]);
-		// dd($response->body());
-		// $countries = json_decode($response->body());
 		foreach (Country::all() as $country)
 		{
-			$response = Http::post('https://devtest.ge/get-country-statistics', [
+			$stat = Http::post('https://devtest.ge/get-country-statistics', [
 				'code'=> $country->code,
-			]);
-			$stat = json_decode($response->body());
+			])->json();
 
 			Stat::updateOrCreate([
-				'country'    => $stat->country,
-				'country_id' => $country->id,
-				'confirmed'  => $stat->confirmed,
-				'recovered'  => $stat->recovered,
-				'critical'   => $stat->critical,
-				'deaths'     => $stat->deaths,
+				'country'    => $stat['country'],
+				'country_id' => $country['id'],
+				'confirmed'  => $stat['confirmed'],
+				'recovered'  => $stat['recovered'],
+				'critical'   => $stat['critical'],
+				'deaths'     => $stat['deaths'],
 			]);
 		}
 
