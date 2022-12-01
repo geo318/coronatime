@@ -1,9 +1,13 @@
+
 <div class="relative">
-    <span>english</span>
+    <span>{{ config('languages')[app()->currentLocale()] }}</span>
     <div class="absolute top-0 hidden">
         <ul>
-            <li>english</li>
-            <li>georgian</li>
+            @foreach (config('languages') as $lang => $language)
+                @if(app()->currentLocale() !== $lang)
+                    <li>{{ $language }}</li>
+                @endif
+            @endforeach
         </ul>
     </div>
 </div>
