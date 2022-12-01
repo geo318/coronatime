@@ -17,17 +17,17 @@
   </head>
   @props(['header'])
   <body class="font-['Inter'] h-full w-full min-h-screen px-4 bg:px-5 xl:px-[6.75rem] mx-auto text-[#010414]">
-        @isset($header)
-            <x-header/>
-        @endisset
+    @isset($header)
+      <x-header/>
+    @endisset
 
-        <main {{ $attributes(['class' => 'flex flex-col min-h-screen pt-[2.5rem]']) }}>
-          {{ $slot }}
-        </main>
-        @if(Session::has('success'))
-          <x-flash name="success"/>
-        @elseif(Session::has('fail'))
-          <x-flash name="fail"/>
-        @endif
+    <main {{ $attributes(['class' => 'flex flex-col min-h-screen pt-[2.5rem]']) }}>
+      {{ $slot }}
+    </main>
+    @if(Session::has('success'))
+      <x-flash name="success"/>
+    @elseif(Session::has('fail'))
+      <x-flash name="fail"/>
+    @endif
   </body>
 </html>

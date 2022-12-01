@@ -25,6 +25,7 @@ Route::middleware('guest')->group(function () {
 Route::middleware(['auth', 'verified'])->group(function () {
 	Route::redirect('/', '/admin');
 	Route::get('/admin/world', [StatsController::class, 'sum'])->name('admin.world');
+	Route::get('/admin/country', [StatsController::class, 'getStats'])->name('admin.country');
 	Route::post('/admin/logout', [LoginController::class, 'logout'])->name('logout');
 });
 
