@@ -12,15 +12,8 @@ return new class extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('stats', function (Blueprint $table) {
-			$table->id();
-			$table->string('country');
-			$table->foreignId('country_id');
-			$table->integer('confirmed');
-			$table->integer('recovered');
-			$table->integer('critical');
-			$table->integer('deaths');
-			$table->timestamps();
+		Schema::table('stats', function (Blueprint $table) {
+			$table->json('locale')->after('country');
 		});
 	}
 
@@ -31,6 +24,8 @@ return new class extends Migration {
 	 */
 	public function down()
 	{
-		Schema::dropIfExists('stats');
+		Schema::table('stats', function (Blueprint $table) {
+			$table->dropColumn('locale');
+		});
 	}
 };

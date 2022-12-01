@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreFilterRequest;
 use App\Models\Stat;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class StatsController extends Controller
@@ -21,11 +21,16 @@ class StatsController extends Controller
 		]);
 	}
 
-	public function getStats(Request $request)
+	public function getStats(StoreFilterRequest $request)
 	{
-		$table = DB::table('stats');
+		['col' => $col, 'sort' => $sort, 'search' => $search] = $request;
+
+		$table = DB::table('stats')
+			->where('country', 'like', '%' . $search . '%')
+			->orWhere('locale', 'like', '%' . $search . '%');
+
 		return view('admin', [
-			'stats' => isset($request->col) ? $table->orderBy($request->col, $request->sort)->get() : $table->get(),
+			'stats' => isset($col) ? $table->orderBy($col, $sort)->get() : $table->get(),
 		]);
 	}
 }

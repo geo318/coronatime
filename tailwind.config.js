@@ -25,7 +25,10 @@ module.exports = {
       },
       boxShadow: {
         'inner-gray': 'inset 0 -1px 1px 0px #F6F6F7',
-      }
+      },
+      backgroundPosition: {
+        'left-6': 'left 24px center'
+      },
     },
   },
   plugins: [],
