@@ -26,6 +26,6 @@ class LoginController extends Controller
 		}
 
 		session()->regenerate();
-		return redirect(route('admin'));
+		return redirect(route('admin.world'));
 	}
 }

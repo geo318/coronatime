@@ -20,11 +20,15 @@ module.exports = {
         'dark-gray' : '#808189',
         'app-black' : '#010414',
         'app-yellow' : '#EAD621',
-        'transparent': 'transparent'
+        'transparent': 'transparent',
+        'app-gray-lite' : '#F6F6F7'
       },
       boxShadow: {
         'inner-gray': 'inset 0 -1px 1px 0px #F6F6F7',
-      }
+      },
+      backgroundPosition: {
+        'left-6': 'left 24px center'
+      },
     },
   },
   plugins: [],

@@ -1,0 +1,1 @@
+<div class="col-span-1 text-left text-sm pl-10 py-5 border-t border-app-gray-lite">{{ $slot }}</div>

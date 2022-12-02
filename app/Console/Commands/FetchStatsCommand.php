@@ -23,6 +23,7 @@ class FetchStatsCommand extends Command
 
 			Stat::updateOrCreate([
 				'country'    => $stat['country'],
+				'locale'     => $country['name'],
 				'country_id' => $country['id'],
 				'confirmed'  => $stat['confirmed'],
 				'recovered'  => $stat['recovered'],
