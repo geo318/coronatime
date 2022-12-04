@@ -1,7 +1,5 @@
 <ul {{ $attributes(['class' => '']) }}>
-    <li class="md:hidden">
-        <div class="close text-2xl text-right cursor-pointer">✕</div> 
-    </li>
+    <li class="md:hidden text-right close text-2xl cursor-pointer">✕</li>
     <li class="p-5 md:p-0">
         <span class="md:hidden">{{ __('main.hi') }}, </span>
         <span class="font-bold text-base leading-5">{{ auth()->user()->username }}</span>

@@ -1,6 +1,6 @@
 <nav class="ml-auto">
     <ul class="flex flex-row gap-8 items-center">
-        <li class="flex mr-auto md:mr-0 ml-auto">
+        <li class="trigger cursor-pointer flex mr-auto md:mr-0 ml-auto">
             <x-dropdown/>
             <img class="ml-2" src="{{ asset('icons/arrow.svg') }}" alt="">
         </li>
