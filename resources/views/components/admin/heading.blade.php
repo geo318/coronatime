@@ -1,1 +1,1 @@
-<h1 class="text-[1.56rem] leading-[1.88rem] font-extrabold">{{ $slot }}</h1>
+<h1 class="md:text-[1.56rem] md:leading-[1.88rem] text-xl leading-6 font-extrabold">{{ $slot }}</h1>

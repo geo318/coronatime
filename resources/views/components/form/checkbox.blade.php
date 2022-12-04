@@ -1,5 +1,6 @@
 @props(['label','name', 'password', 'link'])
-<div class="flex items-center">
+
+<div {{ $attributes(["class"=>"flex items-center"]) }}>
     <input
         class="form-check-input appearance-none h-5 w-5 border border-app-gray rounded bg-white
             checked:bg-app-green checked:border-0 checked:bg-[url('/public/icons/check.svg')] bg-[length:0.7rem]
@@ -11,7 +12,7 @@
         {{ $label ?? '' }}
     </label>
     @isset($password)
-        <a href="{{ $link }}" class="font-semibold text-sm leading-5 text-app-blue ml-auto">Forgot password?</a>
+        <a href="{{ $link }}" class="font-semibold text-sm leading-5 text-app-blue ml-auto">{{ __('main.forgot_password') }}</a>
     @endisset
 
 </div>

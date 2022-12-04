@@ -1,1 +1,1 @@
-<x-notify message="We have sent you a confirmation email"/>
+<x-notify message="{{ __('main.confirmation_email_note') }}" resend/>

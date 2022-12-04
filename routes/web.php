@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes(['verify' => true]);
 
+Route::get('lang/{lang}', ['as' => 'lang.switch', 'uses' => 'App\Http\Controllers\LanguageController@switchLanguage']);
+
 Route::middleware('guest')->group(function () {
 	Route::redirect('/', '/login');
 	Route::view('/login', 'login')->name('login');

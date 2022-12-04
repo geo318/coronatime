@@ -1,5 +1,5 @@
 @props(['col'])
-<div class="flex items-center col-span-1 text-left pl-10 py-5 text-sm font-semibold">
+<div class="flex items-center col-span-1 text-left md:pl-10 pl-4 py-5 text-sm font-semibold">
     <div>{{ $slot }}</div>
     <div class="ml-2 flex flex-col justify-center items-center gap-[.188rem]">
         <a href="?col={{ $col }}&sort=asc&{{ http_build_query(request()->except('col','sort')) }}">

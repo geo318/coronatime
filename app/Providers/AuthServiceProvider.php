@@ -29,10 +29,10 @@ class AuthServiceProvider extends ServiceProvider
 		$this->registerPolicies();
 		VerifyEmail::toMailUsing(function ($notifiable, $url) {
 			return (new MailMessage)
-				->subject('verify your email')
-				->greeting('Confirmation email')
-				->line('click this button to verify your email')
-				->action('VERIFY EMAIL', $url)
+				->subject(__('main.verify_your_email'))
+				->greeting(__('main.confirmation_email'))
+				->line(__('main.recover_password_sub'))
+				->action(__('main.verify_email'), $url)
 				->salutation('');
 		});
 	}
