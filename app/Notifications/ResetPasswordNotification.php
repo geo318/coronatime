@@ -25,10 +25,10 @@ class ResetPasswordNotification extends Notification
 	public function toMail($notifiable)
 	{
 		return (new MailMessage())
-			->subject('Recover your password')
-			->greeting('Recover password')
-			->line('click this button to recover a password')
-			->action('RECOVER PASSWORD', $this->token . '?email=' . $notifiable->email)
+			->subject(__('main.recover_your_password'))
+			->greeting(__('main.recover_password'))
+			->line(__('main.recover_password_sub'))
+			->action(__('main.recover_password'), $this->token . '?email=' . $notifiable->email)
 			->salutation('');
 	}
 }

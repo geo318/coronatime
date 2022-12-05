@@ -21,7 +21,7 @@
       <x-header/>
     @endisset
 
-    <main {{ $attributes(['class' => 'flex flex-col min-h-screen pt-[2.5rem]']) }}>
+    <main {{ $attributes(['class' => "flex flex-col min-h-screen md:pt-[2.5rem] pt-[1.56rem]"]) }}>
       {{ $slot }}
     </main>
     @if(Session::has('success'))

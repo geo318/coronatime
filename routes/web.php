@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ConfirmEmailController;
+use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ResetPasswordController;
@@ -9,6 +10,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 Auth::routes(['verify' => true]);
+
+Route::get('lang/{lang}', [LanguageController::class, 'switchLanguage'])->name('lang.switch');
 
 Route::middleware('guest')->group(function () {
 	Route::redirect('/', '/login');
