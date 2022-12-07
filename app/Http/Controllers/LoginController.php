@@ -22,7 +22,7 @@ class LoginController extends Controller
 
 		if (!Auth::attempt($validated, ['remember_token' => $remember]))
 		{
-			throw ValidationException::withMessages(['username' => 'Check your email and password again!']);
+			throw ValidationException::withMessages(['username' => __('login_error')]);
 		}
 
 		session()->regenerate();

@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreEmailRequest;
 use App\Http\Requests\StorePasswordRequest;
 use Illuminate\Support\Facades\Password;
-use Illuminate\Support\Str;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Support\Facades\Hash;
 
@@ -35,10 +34,7 @@ class ResetPasswordController extends Controller
 		$status = Password::reset(
 			$request->only('email', 'password', 'password_confirmation', 'token'),
 			function ($user, $password) {
-				$user
-					->forceFill(['password' => Hash::make($password)])
-					->setRememberToken(Str::random(60));
-				$user->save();
+				$user->update(['password' => Hash::make($password)]);
 				event(new PasswordReset($user));
 			}
 		);
