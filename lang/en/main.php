@@ -54,4 +54,5 @@ return [
 	'resend'                  => 'Resend',
 	'go_back'                 => 'Go back',
 	'hi'                      => 'Hello',
+	'login_error'             => 'Check your email and password again!',
 ];

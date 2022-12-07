@@ -11,7 +11,7 @@ class StoreRegisterRequest extends FormRequest
 		return [
 			'username' => 'required|min:3|max:50|unique:users,username',
 			'email'    => 'required|email|unique:users,email',
-			'password' => 'required_with:repeat|min:3|max:50',
+			'password' => 'required|min:3|max:50',
 			'repeat'   => 'required|same:password',
 		];
 	}
