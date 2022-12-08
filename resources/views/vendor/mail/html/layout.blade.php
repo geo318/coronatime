@@ -6,6 +6,12 @@
 <meta name="color-scheme" content="light">
 <meta name="supported-color-schemes" content="light">
 <style>
+    table, tr, td, tbody, a, .img-cont {
+        width:100%;
+        max-width: 100%;
+        display:block;
+        margin: 0 auto;
+    }
     @media only screen and (max-width: 700px) {
         .img-cont {
             margin:0 0 40px !important;
@@ -38,7 +44,7 @@
 
 <!-- Email Body -->
 <a class="img-cont">
-    <img src="https://picsum.photos/520/365" class="logo" alt="coronatime">
+    <img src="{{ asset('icons/mail.png') }}" class="logo" alt="coronatime">
 </a>
 <tr>
 <td class="body" width="100%" cellpadding="0" cellspacing="0" style="border: hidden !important;">
