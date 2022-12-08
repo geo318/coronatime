@@ -13,7 +13,7 @@ return new class extends Migration {
 	public function up()
 	{
 		Schema::table('stats', function (Blueprint $table) {
-			$table->json('locale')->after('country');
+			$table->json('locale')->nullable()->after('country');
 		});
 	}
 
