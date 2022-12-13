@@ -18,10 +18,15 @@ class FetchCountriesCommand extends Command
 
 		foreach ($countries as $id => $country)
 		{
-			Country::updateOrCreate([
-				'code' => $country['code'],
-				'name' => json_encode($country['name']),
-			]);
+			Country::updateOrCreate(
+				[
+					'code' => $country['code'],
+				],
+				[
+					'code' => $country['code'],
+					'name' => json_encode($country['name']),
+				]
+			);
 		}
 
 		$this->info('Counties table Successfully created');

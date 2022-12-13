@@ -21,15 +21,20 @@ class FetchStatsCommand extends Command
 				'code'=> $country->code,
 			])->json();
 
-			Stat::updateOrCreate([
-				'country'    => $stat['country'],
-				'locale'     => $country['name'],
-				'country_id' => $country['id'],
-				'confirmed'  => $stat['confirmed'],
-				'recovered'  => $stat['recovered'],
-				'critical'   => $stat['critical'],
-				'deaths'     => $stat['deaths'],
-			]);
+			Stat::updateOrCreate(
+				[
+					'country_id' => $country['id'],
+				],
+				[
+					'country'    => $stat['country'],
+					'locale'     => $country['name'],
+					'country_id' => $country['id'],
+					'confirmed'  => $stat['confirmed'],
+					'recovered'  => $stat['recovered'],
+					'critical'   => $stat['critical'],
+					'deaths'     => $stat['deaths'],
+				]
+			);
 		}
 
 		$this->info('Counties table Successfully created');
