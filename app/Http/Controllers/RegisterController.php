@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 
 class RegisterController extends Controller
 {
-	public function store(StoreRegisterRequest $request)
+	public function register(StoreRegisterRequest $request)
 	{
 		$validated = $request->validated();
 		$validated['password'] = bcrypt($validated['password']);
